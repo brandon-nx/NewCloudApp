@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<title>LifeTrack - HistoryCalendar</title>
+    <body class="font-display">
+    <div class="app-container flex flex-col overflow-x-hidden">
+
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-xl">
+<!-- Top Header -->
+<header class="flex-none bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-1.5 rounded-lg">
+                <span class="material-symbols-outlined text-white text-xl">insights</span>
+            </div>
+            <h1 class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-100">LifeTrack</h1>
+        </div>
+        <button id="profile-btn" class="relative p-2 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined text-2xl">account_circle</span>
+        </button>
+    </div>
+</header>
+<!-- View Toggle -->
+<div class="flex px-4 py-4 border-b border-slate-100 dark:border-slate-800">
+<div class="flex h-11 flex-1 items-center justify-center rounded-xl bg-slate-200/50 dark:bg-slate-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm text-slate-500 dark:text-slate-400 has-[:checked]:text-primary font-semibold text-sm transition-all">
+<span class="truncate">Calendar</span>
+<input checked="" class="hidden" name="view-toggle" type="radio" value="Calendar"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm text-slate-500 dark:text-slate-400 has-[:checked]:text-primary font-semibold text-sm transition-all">
+<span class="truncate">List</span>
+<input class="hidden" name="view-toggle" type="radio" value="List"/>
+</label>
+</div>
+</div><!-- Summary Card -->
+<div class="px-4 py-4">
+<div class="bg-primary/10 rounded-xl p-4 flex items-center justify-between border border-primary/20">
+<div>
+<p class="text-primary font-bold text-2xl">85%</p>
+<p class="text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Completion Rate</p>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-slate-100 font-bold text-2xl">12</p>
+<p class="text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Days Streak</p>
+</div>
+</div>
+</div>
+<!-- Calendar Widget -->
+<section class="bg-white dark:bg-background-dark p-4 border-b border-slate-100 dark:border-slate-800">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between mb-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">chevron_left</span>
+</button>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">October 2023</p>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 text-center mb-1">
+<span class="text-slate-400 text-xs font-bold py-1">S</span>
+<span class="text-slate-400 text-xs font-bold py-1">M</span>
+<span class="text-slate-400 text-xs font-bold py-1">T</span>
+<span class="text-slate-400 text-xs font-bold py-1">W</span>
+<span class="text-slate-400 text-xs font-bold py-1">T</span>
+<span class="text-slate-400 text-xs font-bold py-1">F</span>
+<span class="text-slate-400 text-xs font-bold py-1">S</span>
+</div>
+<div class="grid grid-cols-7 gap-y-1">
+<!-- Example Week -->
+<button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">24</button>
+<button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">25</button>
+<button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">26</button>
+<button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">27</button>
+<button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">28</button>
+<button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">29</button>
+<button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">30</button>
+<button class="h-10 w-full text-slate-900 dark:text-slate-100 text-sm font-medium flex items-center justify-center">1</button>
+<button class="h-10 w-full text-slate-900 dark:text-slate-100 text-sm font-medium flex items-center justify-center">2</button>
+<button class="h-10 w-full text-slate-900 dark:text-slate-100 text-sm font-medium flex items-center justify-center">3</button>
+<button class="h-10 w-full text-slate-900 dark:text-slate-100 text-sm font-medium flex items-center justify-center">4</button>
+<button class="h-10 w-full text-white text-sm font-medium flex items-center justify-center">
+<div class="flex size-9 items-center justify-center rounded-full bg-primary shadow-md shadow-primary/30">5</div>
+</button>
+<button class="h-10 w-full text-slate-900 dark:text-slate-100 text-sm font-medium flex items-center justify-center">6</button>
+<button class="h-10 w-full text-slate-900 dark:text-slate-100 text-sm font-medium flex items-center justify-center">7</button>
+</div>
+</div>
+</section>
+<!-- Selected Day Progress -->
+<main class="flex-1 p-4 bg-background-light dark:bg-background-dark space-y-4">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Progress - Oct 5</h3>
+<span class="text-xs font-semibold px-2 py-1 bg-primary/10 text-primary rounded-full">85% Complete</span>
+</div>
+<!-- Habit Cards -->
+<div class="grid grid-cols-1 gap-4">
+<!-- Sleep Card -->
+<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Sleep</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">7h 30m / 8h</p>
+</div>
+</div>
+<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<!-- Exercise Card -->
+<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Exercise</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">45m / 60m</p>
+</div>
+</div>
+<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<!-- Study Card -->
+<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4 relative">
+<div class="flex size-12 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Study</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">2h 00m / 2h</p>
+</div>
+</div>
+<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<!-- Water Card -->
+<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Water</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">1500ml / 2000ml</p>
+</div>
+</div>
+<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+<!-- Visual Graph Summary Placeholder -->
+<div class="h-20"></div>
+</main>
+<!-- Bottom Menu -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 py-2 pb-6 flex items-center z-30 px-8">
+    
+    <div class="flex justify-between items-center w-full">
+        <a id="menu-dashboard" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">grid_view</span>
+            <span class="text-[10px] font-bold">Dashboard</span>
+        </a>
+        <a id="menu-habits" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl fill-1">format_list_bulleted</span>
+            <span class="text-[10px] font-bold">Habits</span>
+        </a>
+        <a id="menu-history" class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined text-2xl">history</span>
+            <span class="text-[10px] font-bold">History</span>
+        </a>
+        <a id="menu-settings" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <span class="text-[10px] font-bold">Settings</span>
+        </a>
+
+    </div> </nav>
+</div>
+<script src="/js/historyCalendar.js"></script>
+</body></html>

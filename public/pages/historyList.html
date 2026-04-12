@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Habit History - Mobile View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <title>LifeTrack - HistoryList</title>
+    <body class="font-display">
+    <div class="app-container flex flex-col overflow-x-hidden">
+
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-background-dark">
+<!-- Top Header -->
+<header class="flex-none bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-1.5 rounded-lg">
+                <span class="material-symbols-outlined text-white text-xl">insights</span>
+            </div>
+            <h1 class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-100">LifeTrack</h1>
+        </div>
+        <button id="profile-btn" class="relative p-2 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined text-2xl">account_circle</span>
+        </button>
+    </div>
+</header>
+<!-- View Toggle -->
+<div class="flex px-4 py-4 border-b border-slate-100 dark:border-slate-800">
+<div class="flex h-11 flex-1 items-center justify-center rounded-xl bg-slate-200/50 dark:bg-slate-800 p-1">
+
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm text-slate-500 dark:text-slate-400 has-[:checked]:text-primary font-semibold text-sm transition-all">
+<span class="truncate">Calendar</span>
+<input class="hidden" name="view-toggle" type="radio" value="List"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm text-slate-500 dark:text-slate-400 has-[:checked]:text-primary font-semibold text-sm transition-all">
+<span class="truncate">List</span>
+<input checked="" class="hidden" name="view-toggle" type="radio" value="Calendar"/>
+</label>
+</div>
+</div>
+<!-- Summary Card -->
+<div class="px-4 py-2">
+<div class="bg-primary/10 rounded-xl p-4 flex items-center justify-between border border-primary/20">
+<div>
+<p class="text-primary font-bold text-2xl">85%</p>
+<p class="text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Average Completion Rate</p>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-slate-100 font-bold text-2xl">12</p>
+<p class="text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Days Streak</p>
+</div>
+</div>
+</div>
+<!-- History List Content -->
+<main class="flex-1 px-4 pb-24">
+<!-- Date Section -->
+<section class="mb-6">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-wider mb-3 px-1">Today, Oct 24</h3>
+<!-- Habit Log Item 1 -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900/30 text-primary shrink-0 size-12">
+<span class="material-symbols-outlined">bedtime</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold truncate">Sleep</p>
+<div class="flex items-center gap-1 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span>
+<span class="text-xs font-bold uppercase">Goal Met</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">8h 15m</p>
+<div class="flex items-center gap-3">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Habit Log Item 2 -->
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-center rounded-lg bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 shrink-0 size-12">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold truncate">Water Intake</p>
+<div class="flex items-center gap-1 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span>
+<span class="text-xs font-bold uppercase">Goal Met</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">2.5L</p>
+<div class="flex items-center gap-3">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Date Section Yesterday -->
+<section class="mb-6">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-wider mb-3 px-1">Yesterday, Oct 23</h3>
+<div class="flex flex-col gap-3">
+<!-- Habit Log Item 3 -->
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-center rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 shrink-0 size-12">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold truncate">Workout</p>
+<div class="flex items-center gap-1 text-primary">
+<span class="text-xs font-bold uppercase">Completed</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">45m Session</p>
+<div class="flex items-center gap-3">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Habit Log Item 4 -->
+<div class="flex items-center gap-3 bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-center rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 shrink-0 size-12">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold truncate">Reading</p>
+<div class="flex items-center gap-1 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-sm font-bold">check_circle</span>
+<span class="text-xs font-bold uppercase">Goal Met</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">30 Pages</p>
+<div class="flex items-center gap-3">
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Menu -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 py-2 pb-6 flex items-center z-30 px-8">
+    
+    <div class="flex justify-between items-center w-full">
+        <a id="menu-dashboard" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">grid_view</span>
+            <span class="text-[10px] font-bold">Dashboard</span>
+        </a>
+        <a id="menu-habits" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl fill-1">format_list_bulleted</span>
+            <span class="text-[10px] font-bold">Habits</span>
+        </a>
+        <a id="menu-history" class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined text-2xl">history</span>
+            <span class="text-[10px] font-bold">History</span>
+        </a>
+        <a id="menu-settings" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <span class="text-[10px] font-bold">Settings</span>
+        </a>
+
+    </div> </nav>
+</div>
+<script src="/js/historyList.js"></script>
+</body></html>

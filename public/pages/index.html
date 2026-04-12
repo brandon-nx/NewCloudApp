@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        display: ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                },
+            },
+        };
+    </script>
+    <title>LifeTrack - Master Your Habits</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="font-display">
+    <div class="app-container flex flex-col min-h-screen">
+        <nav class="flex items-center bg-transparent p-4 pb-2 justify-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-primary size-8 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-xl">bolt</span>
+                </div>
+                <h2 class="text-slate-900 dark:text-slate-100 text-xl font-extrabold leading-tight tracking-tight">LifeTrack</h2>
+            </div>
+        </nav>
+
+        <div class="px-4 py-6">
+            <div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-primary/10 rounded-xl min-h-[380px] border border-primary/20 relative"
+                 style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZGWIep_m33i3c5w9LeTWyidaiCmtjctdfm4DDUq05Tr8j7y9YOl594tiLN5rheBlK50vpWDDRmZLPuXWB3BFITjC7DEeMXzEPTZc7x-Ny-VeVLX08GbXxaHR5c7bnvbk3Cv4NNCXeqklsDhi43NBHEE0_KL98UwgZYc-ItWO9upIx0MVWt0zqajJR1ryi7-VhAtz4s4hRkM4vAx-tk1-3t69jdde7KvWUG8A6AoMoZa1eW1UGIKWiFvDsS39tNssf0CygZR_xS2g");'>
+                <div class="absolute inset-0 bg-gradient-to-t from-background-light/40 via-transparent to-transparent"></div>
+            </div>
+        </div>
+
+        <div class="px-6 flex flex-col items-center">
+            <h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-extrabold leading-[1.1] text-center pb-4 pt-4">
+                Track your habits,<br><span class="text-primary">master your life.</span>
+            </h1>
+            <p class="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed pb-8 px-2 text-center max-w-[480px]">
+                The all-in-one platform to build consistency, monitor progress, and achieve your goals with ease.
+            </p>
+        </div>
+
+        <div class="flex justify-center mt-auto pb-12">
+            <div class="flex flex-1 gap-4 max-w-[480px] flex-col items-stretch px-6">
+                <button id="getStartedBtn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-white text-lg font-bold leading-normal tracking-wide shadow-lg shadow-primary/30 active:scale-[0.98] transition-all">
+                    <span class="truncate">Get Started</span>
+                </button>
+
+                <button id="signInBtn" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-lg font-bold leading-normal tracking-wide border border-slate-200 dark:border-slate-700 shadow-sm active:scale-[0.98] transition-all">
+                    <span class="truncate">Sign In</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/index.js"></script>
+</body>
+</html>

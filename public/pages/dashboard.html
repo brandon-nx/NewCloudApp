@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+
+    <body class="font-display">
+
+    <div class="app-container flex flex-col overflow-x-hidden">
+    <style>
+        body { font-family: 'Manrope', sans-serif; }
+        .circular-progress {
+            background: conic-gradient(var(--progress-color) calc(var(--percentage) * 1%), #e2e8f0 0);
+        }
+        .font-variation-fill-1 { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-xl">
+        <!-- Top Header -->
+        <header class="flex-none bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+            <div class="flex items-center justify-between px-6 py-4">
+                <div class="flex items-center gap-2">
+                    <div class="bg-primary p-1.5 rounded-lg">
+                        <span class="material-symbols-outlined text-white text-xl">insights</span>
+                    </div>
+                    <h1 class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-100">LifeTrack</h1>
+                </div>
+                <button id="profile-btn" class="relative p-2 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
+                <span class="material-symbols-outlined text-2xl">account_circle</span>
+            </button>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto px-6 pt-8 pb-[100px] space-y-8">
+            <section>
+                <div class="bg-primary rounded-xl p-6 shadow-lg shadow-primary/20 relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-white/80 text-sm font-semibold uppercase tracking-wider">Today's Progress</p>
+                                <h2 class="text-3xl font-bold text-white mt-1">75% Complete</h2>
+                            </div>
+                            <span class="material-symbols-outlined text-white/30 text-4xl">bolt</span>
+                        </div>
+                        <div class="w-full bg-white/20 rounded-full h-3 mb-4">
+                            <div class="bg-white h-3 rounded-full" style="width: 75%;"></div>
+                        </div>
+                        <p class="text-white/90 text-sm font-medium">Almost there! 3 of 4 habits completed today.</p>
+                    </div>
+                    <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Active Habits</h3>
+                    <button class="text-primary text-sm font-semibold">View All</button>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center">
+                        <div class="relative w-20 h-20 flex items-center justify-center mb-3">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle class="text-slate-100 dark:text-slate-800" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="6"></circle>
+                                <circle class="text-indigo-500" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="25.6" stroke-width="6"></circle>
+                            </svg>
+                            <span class="absolute material-symbols-outlined text-indigo-500 text-2xl">bedtime</span>
+                        </div>
+                        <p class="font-bold text-slate-900 dark:text-slate-100">Sleep</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">7h / 8h</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center">
+                        <div class="relative w-20 h-20 flex items-center justify-center mb-3">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle class="text-slate-100 dark:text-slate-800" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="6"></circle>
+                                <circle class="text-orange-500" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="53.4" stroke-width="6"></circle>
+                            </svg>
+                            <span class="absolute material-symbols-outlined text-orange-500 text-2xl">fitness_center</span>
+                        </div>
+                        <p class="font-bold text-slate-900 dark:text-slate-100">Exercise</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">45m / 60m</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center">
+                        <div class="relative w-20 h-20 flex items-center justify-center mb-3">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle class="text-slate-100 dark:text-slate-800" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="6"></circle>
+                                <circle class="text-purple-500" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="72.6" stroke-width="6"></circle>
+                            </svg>
+                            <span class="absolute material-symbols-outlined text-purple-500 text-2xl">menu_book</span>
+                        </div>
+                        <p class="font-bold text-slate-900 dark:text-slate-100">Study</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">2h / 3h</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center">
+                        <div class="relative w-20 h-20 flex items-center justify-center mb-3">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle class="text-slate-100 dark:text-slate-800" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="6"></circle>
+                                <circle class="text-blue-500" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="53.4" stroke-width="6"></circle>
+                            </svg>
+                            <span class="absolute material-symbols-outlined text-blue-500 text-2xl">water_drop</span>
+                        </div>
+                        <p class="font-bold text-slate-900 dark:text-slate-100">Water</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">1.5L / 2L</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pb-6">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100">Weekly Activity</h3>
+                    </div>
+                    <div class="flex items-end justify-between h-32 gap-2">
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="bg-primary/20 w-full rounded-t-lg h-16"></div>
+                            <span class="text-[10px] font-bold text-slate-400">Mon</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="bg-primary/20 w-full rounded-t-lg h-24"></div>
+                            <span class="text-[10px] font-bold text-slate-400">Tue</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="bg-primary/20 w-full rounded-t-lg h-12"></div>
+                            <span class="text-[10px] font-bold text-slate-400">Wed</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="bg-primary w-full rounded-t-lg h-28"></div>
+                            <span class="text-[10px] font-bold text-slate-400">Thu</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="bg-primary/20 w-full rounded-t-lg h-20"></div>
+                            <span class="text-[10px] font-bold text-slate-400">Fri</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="bg-primary/20 w-full rounded-t-lg h-8"></div>
+                            <span class="text-[10px] font-bold text-slate-400">Sat</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 w-full">
+                            <div class="bg-primary/20 w-full rounded-t-lg h-14"></div>
+                            <span class="text-[10px] font-bold text-slate-400">Sun</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+<!-- Bottom Menu -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 py-2 pb-6 flex items-center z-30 px-8">
+    
+    <div class="flex justify-between items-center w-full">
+        <a id="menu-dashboard" class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined text-2xl">grid_view</span>
+            <span class="text-[10px] font-bold">Dashboard</span>
+        </a>
+        <a id="menu-habits" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl fill-1">format_list_bulleted</span>
+            <span class="text-[10px] font-bold">Habits</span>
+        </a>
+        <a id="menu-history" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">history</span>
+            <span class="text-[10px] font-bold">History</span>
+        </a>
+        <a id="menu-settings" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <span class="text-[10px] font-bold">Settings</span>
+        </a>
+
+    </div> </nav>
+</div>
+
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

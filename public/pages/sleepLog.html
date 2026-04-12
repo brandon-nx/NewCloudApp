@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Log Habit - Sleep Tracker</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css">
+
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+        <title>LifeTrack - Sleep Log</title>
+    <body class="font-display">
+
+    <div class="app-container flex flex-col overflow-x-hidden">
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col items-center">
+<div class="relative flex h-full min-h-screen w-full max-w-md flex-col bg-white dark:bg-slate-900 overflow-x-hidden shadow-2xl">
+<!-- Top Header -->
+<header class="flex-none bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-1.5 rounded-lg">
+                <span class="material-symbols-outlined text-white text-xl">insights</span>
+            </div>
+            <h1 class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-100">LifeTrack</h1>
+        </div>
+        <button id="profile-btn" class="relative p-2 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined text-2xl">account_circle</span>
+        </button>
+    </div>
+</header>
+<!-- Top Tab Bar -->
+<nav class="bg-white dark:bg-background-dark w-full">
+  <div class="flex justify-around border-b border-slate-100 dark:border-slate-800 overflow-x-auto no-scrollbar">
+    
+    <a id="tab-habits" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">grid_view</span>
+      <p class="text-[11px] font-bold">All</p>
+    </a>
+
+    <a id="tab-sleep" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 py-3 transition-all" style="border-color: #9333ea; color: #9333ea;" href="#">
+      <span class="material-symbols-outlined mb-1">bedtime</span>
+      <p class="text-[11px] font-bold">Sleep</p>
+    </a>
+
+    <a id="tab-exercise" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">fitness_center</span>
+      <p class="text-[11px] font-bold">Exercise</p>
+    </a>
+
+    <a id="tab-study" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">menu_book</span>
+      <p class="text-[11px] font-bold">Study</p>
+    </a>
+
+    <a id="tab-water" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">water_drop</span>
+      <p class="text-[11px] font-bold">Water</p>
+    </a>
+  </div>
+</nav>
+<!-- Main Content Area: Sleep Tracker -->
+<div class="flex-1 px-4 pt-6 pb-24 overflow-y-auto">
+<div class="mb-6 text-center">
+<h3 class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight">Sleep Tracker</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Consistency is key to a healthy lifestyle</p>
+</div>
+<div class="bg-[#9333ea]/10 dark:bg-primary/10 rounded-xl p-6 mb-6 border border-primary/10">
+<div class="flex items-center justify-center mb-4">
+<div class="size-16 dark:bg-primary/30 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[#9333ea] text-[48px]">bedtime</span>
+</div>
+</div>
+<div class="text-center">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Calculated Duration</p>
+<p class="text-slate-900 dark:text-slate-100 text-3xl font-extrabold">7h 45m</p>
+</div>
+</div>
+<!-- Form -->
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-bold">Bedtime</label>
+<div class="relative">
+<input class="w-full h-14 bg-slate-50 dark:bg-slate-800 border-none rounded-xl px-4 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary" type="time" value="22:30"/>
+<div class="absolute right-4 top-4 text-slate-400">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-bold">Wake Up Time</label>
+<div class="relative">
+<input class="w-full h-14 bg-slate-50 dark:bg-slate-800 border-none rounded-xl px-4 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary" type="time" value="06:15"/>
+<div class="absolute right-4 top-4 text-slate-400">
+<span class="material-symbols-outlined">alarm</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-bold">Sleep Quality</label>
+<div class="flex justify-between items-center bg-slate-50 dark:bg-slate-800 p-2 rounded-xl">
+<button class="flex-1 py-2 flex justify-center text-slate-400"><span class="material-symbols-outlined">sentiment_very_dissatisfied</span></button>
+<button class="flex-1 py-2 flex justify-center text-slate-400"><span class="material-symbols-outlined">sentiment_dissatisfied</span></button>
+<button class="flex-1 py-2 flex justify-center bg-white dark:bg-slate-700 rounded-lg shadow-sm"><span class="material-symbols-outlined">sentiment_satisfied</span></button>
+<button class="flex-1 py-2 flex justify-center text-slate-400"><span class="material-symbols-outlined">sentiment_very_satisfied</span></button>
+</div>
+</div>
+<button class="w-full h-14 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-colors shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2 mt-4">
+<span class="material-symbols-outlined">save</span>
+                    Log Sleep
+                </button>
+</div>
+</div>
+<!-- Bottom Menu -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 py-2 pb-6 flex items-center z-30 px-8">
+    
+    <div class="flex justify-between items-center w-full">
+        <a id="menu-dashboard" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">grid_view</span>
+            <span class="text-[10px] font-bold">Dashboard</span>
+        </a>
+        <a id="menu-habits" class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined text-2xl fill-1">format_list_bulleted</span>
+            <span class="text-[10px] font-bold">Habits</span>
+        </a>
+        <a id="menu-history" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">history</span>
+            <span class="text-[10px] font-bold">History</span>
+        </a>
+        <a id="menu-settings" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <span class="text-[10px] font-bold">Settings</span>
+        </a>
+    </div> </nav>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+<script src="/js/sleepLog.js"></script>
+</body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sign Up - LifeTrack</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        display: ["Manrope"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="font-display">
+    <div class="app-container flex flex-col overflow-x-hidden">
+        <div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+            <div id="closeBtn" class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </div>
+            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+                LifeTrack
+            </h2>
+        </div>
+
+        <div class="@container">
+            <div class="@[480px]:px-4 @[480px]:py-3">
+                <div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-center items-center overflow-hidden bg-primary/10 @[480px]:rounded-lg min-h-[218px] relative"
+                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPMz_6o4FAUo-1ZhVtufQe0Ogd6Fo9DOCBZ_82Og_vjcUs5-PEudNc4YLQLRdIks2NK0gO9DIpp2I_Q-e-nw3rpGcLh3RC9I2utZX-HN1XZE0urc8pQAU3gkSKjHKop3px6g1jeD1egt1gRYy-Qa-o6Qnr5vamla0SqWdOMqRU2MGawMnIU5szJZYxPPd_OdF7vqQ9EPRy_6FbFoDjyriDOZEgU5W3lvk4rtJbf4Y26ZhNAskOHfOvyekJU-PR5SODnPTmkZ5P2gs");'>
+                    <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+                    <div class="relative z-10 text-center px-6">
+                        <span class="material-symbols-outlined text-white text-5xl mb-2">auto_graph</span>
+                        <h1 class="text-white text-3xl font-extrabold tracking-tight">LifeTrack</h1>
+                        <p class="text-white/90 text-sm font-medium mt-1">Master your daily habits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pb-3 mt-4">
+            <div class="flex border-b border-slate-200 dark:border-slate-800 px-4 justify-between">
+                <a id="loginTab" class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4 flex-1" href="/login">
+                    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Login</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-[13px] pt-4 flex-1" href="/register">
+                    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Sign Up</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-4 px-4 py-4 max-w-lg mx-auto w-full">
+            <label class="flex flex-col w-full">
+                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal pb-2">Full Name</p>
+                <input id="fullName" class="form-input flex w-full rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] text-base font-normal" placeholder="John Doe" type="text" />
+            </label>
+
+            <label class="flex flex-col w-full">
+                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal pb-2">Email Address</p>
+                <input id="email" class="form-input flex w-full rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] text-base font-normal" placeholder="name@example.com" type="email" />
+            </label>
+
+            <label class="flex flex-col w-full">
+                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal pb-2">Password</p>
+                <div class="flex w-full items-stretch rounded-lg">
+                    <input id="password" class="form-input flex w-full min-w-0 flex-1 rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal" placeholder="Create a password" type="password" />
+                    <div class="text-slate-400 flex border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 items-center justify-center pr-[15px] rounded-r-lg border-l-0">
+                        <span class="material-symbols-outlined">visibility</span>
+                    </div>
+                </div>
+            </label>
+
+            <label class="flex flex-col w-full">
+                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal pb-2">Confirm Password</p>
+                <input id="confirmPassword" class="form-input flex w-full rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] text-base font-normal" placeholder="Repeat your password" type="password" />
+            </label>
+
+            <button id="createAccountBtn" class="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-colors mt-4">
+                Create Account
+            </button>
+        </div>
+
+        <div class="flex items-center gap-4 my-4 px-4">
+            <div class="h-px bg-slate-200 dark:bg-slate-800 flex-1"></div>
+            <p class="text-slate-400 text-xs font-medium uppercase tracking-wider">or continue with</p>
+            <div class="h-px bg-slate-200 dark:bg-slate-800 flex-1"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 px-4">
+            <button id="googleBtn" class="flex items-center justify-center gap-2 h-12 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <span class="text-sm font-semibold">Google</span>
+            </button>
+            <button id="facebookBtn" class="flex items-center justify-center gap-2 h-12 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <span class="text-sm font-semibold">Facebook</span>
+            </button>
+        </div>
+
+        <p class="text-center text-slate-500 dark:text-slate-400 text-sm mt-6">
+            Already have an account?
+            <a id="loginNowLink" class="text-primary font-bold hover:underline" href="/login">Login now</a>
+        </p>
+
+        <p id="registerMessage" class="text-sm text-center mt-3 text-red-500"></p>
+
+        <div class="h-10"></div>
+
+        <script type="module" src="/js/register.js"></script>
+    </div>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sign Up - LifeTrack</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        display: ["Manrope"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="font-display">
+    <div class="app-container flex flex-col overflow-x-hidden">
+        <div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+            <div id="closeBtn" class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </div>
+            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+                LifeTrack
+            </h2>
+        </div>
+
+        <div class="@container">
+            <div class="@[480px]:px-4 @[480px]:py-3">
+                <div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-center items-center overflow-hidden bg-primary/10 @[480px]:rounded-lg min-h-[218px] relative"
+                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPMz_6o4FAUo-1ZhVtufQe0Ogd6Fo9DOCBZ_82Og_vjcUs5-PEudNc4YLQLRdIks2NK0gO9DIpp2I_Q-e-nw3rpGcLh3RC9I2utZX-HN1XZE0urc8pQAU3gkSKjHKop3px6g1jeD1egt1gRYy-Qa-o6Qnr5vamla0SqWdOMqRU2MGawMnIU5szJZYxPPd_OdF7vqQ9EPRy_6FbFoDjyriDOZEgU5W3lvk4rtJbf4Y26ZhNAskOHfOvyekJU-PR5SODnPTmkZ5P2gs");'>
+                    <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+                    <div class="relative z-10 text-center px-6">
+                        <span class="material-symbols-outlined text-white text-5xl mb-2">auto_graph</span>
+                        <h1 class="text-white text-3xl font-extrabold tracking-tight">LifeTrack</h1>
+                        <p class="text-white/90 text-sm font-medium mt-1">Master your daily habits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pb-3 mt-4">
+            <div class="flex border-b border-slate-200 dark:border-slate-800 px-4 justify-between">
+                <a id="loginTab" class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4 flex-1" href="/login">
+                    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Login</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-[13px] pt-4 flex-1" href="/register">
+                    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Sign Up</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-4 px-4 py-4 max-w-lg mx-auto w-full">
+            <label class="flex flex-col w-full">
+                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal pb-2">Full Name</p>
+                <input id="fullName" class="form-input flex w-full rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] text-base font-normal" placeholder="John Doe" type="text" />
+            </label>
+
+            <label class="flex flex-col w-full">
+                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal pb-2">Email Address</p>
+                <input id="email" class="form-input flex w-full rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] text-base font-normal" placeholder="name@example.com" type="email" />
+            </label>
+
+            <label class="flex flex-col w-full">
+                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal pb-2">Password</p>
+                <div class="flex w-full items-stretch rounded-lg">
+                    <input id="password" class="form-input flex w-full min-w-0 flex-1 rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal" placeholder="Create a password" type="password" />
+                    <div class="text-slate-400 flex border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 items-center justify-center pr-[15px] rounded-r-lg border-l-0">
+                        <span class="material-symbols-outlined">visibility</span>
+                    </div>
+                </div>
+            </label>
+
+            <label class="flex flex-col w-full">
+                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal pb-2">Confirm Password</p>
+                <input id="confirmPassword" class="form-input flex w-full rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] text-base font-normal" placeholder="Repeat your password" type="password" />
+            </label>
+
+            <button id="createAccountBtn" class="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-colors mt-4">
+                Create Account
+            </button>
+        </div>
+
+        <div class="flex items-center gap-4 my-4 px-4">
+            <div class="h-px bg-slate-200 dark:bg-slate-800 flex-1"></div>
+            <p class="text-slate-400 text-xs font-medium uppercase tracking-wider">or continue with</p>
+            <div class="h-px bg-slate-200 dark:bg-slate-800 flex-1"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 px-4">
+            <button class="flex items-center justify-center gap-2 h-12 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <span class="text-sm font-semibold">Google</span>
+            </button>
+            <button class="flex items-center justify-center gap-2 h-12 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <span class="text-sm font-semibold">Facebook</span>
+            </button>
+        </div>
+
+        <p class="text-center text-slate-500 dark:text-slate-400 text-sm mt-6">
+            Already have an account?
+            <a id="loginNowLink" class="text-primary font-bold hover:underline" href="/login">Login now</a>
+        </p>
+
+        <p id="registerMessage" class="text-sm text-center mt-3 text-red-500"></p>
+
+        <div class="h-10"></div>
+
+        <script type="module" src="/js/register.js"></script>
+    </div>
+</body>
+</html>

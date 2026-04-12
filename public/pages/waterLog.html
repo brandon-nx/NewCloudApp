@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/style.css">
+
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+</script>
+<title>LifeTrack - Water Log</title>
+<body class="font-display">
+
+<div class="app-container flex flex-col overflow-x-hidden">
+
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .active-icon {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+    }
+</style>    
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="relative flex h-full min-h-screen w-full max-w-md flex-col bg-white dark:bg-slate-900 overflow-x-hidden shadow-2xl">
+<!-- Top Header -->
+<header class="flex-none bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-1.5 rounded-lg">
+                <span class="material-symbols-outlined text-white text-xl">insights</span>
+            </div>
+            <h1 class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-100">LifeTrack</h1>
+        </div>
+        <button id="profile-btn" class="relative p-2 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined text-2xl">account_circle</span>
+        </button>
+    </div>
+</header>
+<!-- Top Tab Bar -->
+<nav class="bg-white dark:bg-background-dark w-full">
+  <div class="flex justify-around border-b border-slate-100 dark:border-slate-800 overflow-x-auto no-scrollbar">
+    
+    <a id="tab-habits" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">grid_view</span>
+      <p class="text-[11px] font-bold">All</p>
+    </a>
+
+    <a id="tab-sleep" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">bedtime</span>
+      <p class="text-[11px] font-bold">Sleep</p>
+    </a>
+
+    <a id="tab-exercise" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">fitness_center</span>
+      <p class="text-[11px] font-bold">Exercise</p>
+    </a>
+
+    <a id="tab-study" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">menu_book</span>
+      <p class="text-[11px] font-bold">Study</p>
+    </a>
+
+    <a id="tab-water" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 py-3 transition-all" style="border-color: #137fec; color: #137fec;" href="#">
+      <span class="material-symbols-outlined mb-1">water_drop</span>
+      <p class="text-[11px] font-bold">Water</p>
+    </a>
+  </div>
+</nav>
+<!-- Content Area -->
+<main class="flex-1 overflow-y-auto px-6 pt-8 pb-[100px]">
+<div class="text-center mb-8"><p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Daily Water Goal</p>
+<div class="flex items-baseline justify-center gap-1">
+<span class="text-5xl font-extrabold text-slate-900 dark:text-white">1,250</span>
+<span class="text-xl font-medium text-slate-400">/ 2,500 ml</span>
+</div></div>
+<!-- Progress Visualization -->
+<div class="relative w-64 h-64 mx-auto mb-10 flex items-center justify-center">
+<!-- Background Circle -->
+<svg class="absolute w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-slate-100 dark:text-slate-800" cx="50" cy="50" fill="transparent" r="44" stroke="currentColor" stroke-width="8"></circle>
+<!-- Progress Circle with gradient -->
+<circle cx="50" cy="50" fill="transparent" r="44" stroke="url(#water-gradient)" stroke-dasharray="276.46" stroke-dashoffset="138.23" stroke-linecap="round" stroke-width="8"></circle>
+<defs>
+<lineargradient id="water-gradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#3b82f6"></stop>
+<stop offset="100%" stop-color="#137fec"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex flex-col items-center bg-white dark:bg-slate-900 rounded-full w-[80%] h-[80%] shadow-inner flex items-center justify-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-1" style="font-variation-settings: 'FILL' 1">water_drop</span>
+<span class="text-4xl font-black text-slate-900 dark:text-white">50%</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Hydrated</span>
+</div>
+</div>
+</div>
+<!-- Stats & Progress Bar -->
+<div class="space-y-4 mb-10">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Daily Progress</span>
+<span class="text-xs text-slate-500">1250ml to go</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 50%;"></div>
+</div>
+</div>
+<!-- Quick Add Actions -->
+<div class="grid grid-cols-2 gap-4">
+<button class="group flex flex-col items-center gap-3 p-6 bg-white dark:bg-slate-800 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md hover:border-primary/30 transition-all active:scale-95">
+<div class="size-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">local_drink</span>
+</div>
+<div class="text-center">
+<p class="text-base font-bold text-slate-900 dark:text-white">+250ml</p>
+<p class="text-[10px] font-medium text-slate-500">Small Glass</p>
+</div>
+</button>
+<button class="group flex flex-col items-center gap-3 p-6 bg-white dark:bg-slate-800 rounded-[2rem] shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md hover:border-primary/30 transition-all active:scale-95">
+<div class="size-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">water_full</span>
+</div>
+<div class="text-center">
+<p class="text-base font-bold text-slate-900 dark:text-white">+500ml</p>
+<p class="text-[10px] font-medium text-slate-500">Large Bottle</p>
+</div>
+</button>
+</div>
+<!-- Custom Add -->
+<button class="w-full flex items-center justify-center gap-2 py-4 px-6 bg-slate-100 dark:bg-slate-800 rounded-2xl text-slate-600 dark:text-slate-400 font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors mt-6">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+<span>Custom Amount</span>
+</button>
+<button class="w-full h-14 bg-primary hover:opacity-90 text-white font-bold rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 mt-4 active:scale-95">
+  <span class="material-symbols-outlined">water_drop</span>
+  Log Water
+</button>
+</main>
+
+<!-- Bottom Menu -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 py-2 pb-6 flex items-center z-30 px-8">
+    
+    <div class="flex justify-between items-center w-full">
+        <a id="menu-dashboard" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">grid_view</span>
+            <span class="text-[10px] font-bold">Dashboard</span>
+        </a>
+        <a id="menu-habits" class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined text-2xl fill-1">format_list_bulleted</span>
+            <span class="text-[10px] font-bold">Habits</span>
+        </a>
+        <a id="menu-history" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">history</span>
+            <span class="text-[10px] font-bold">History</span>
+        </a>
+        <a id="menu-settings" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <span class="text-[10px] font-bold">Settings</span>
+        </a>
+    </div> </nav>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+<script src="/js/waterLog.js"></script>
+</body></html>

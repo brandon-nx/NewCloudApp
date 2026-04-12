@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LifeTrack - Study Focus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<link rel="stylesheet" href="/css/style.css">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec", 
+                        "background-light": "#fffcf9",
+                        "background-dark": "#1a120b",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+        <title>LifeTrack - Study Log</title>
+    <body class="font-display">
+
+    <div class="app-container flex flex-col overflow-x-hidden">
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top Header -->
+<header class="flex-none bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-2">
+            <div class="bg-primary p-1.5 rounded-lg">
+                <span class="material-symbols-outlined text-white text-xl">insights</span>
+            </div>
+            <h1 class="text-2xl font-black tracking-tighter text-slate-900 dark:text-slate-100">LifeTrack</h1>
+        </div>
+        <button id="profile-btn" class="relative p-2 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined text-2xl">account_circle</span>
+        </button>
+    </div>
+</header>
+<!-- Top Tab Bar -->
+<nav class="bg-white dark:bg-background-dark w-full">
+  <div class="flex justify-around border-b border-slate-100 dark:border-slate-800 overflow-x-auto no-scrollbar">
+    
+    <a id="tab-habits" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">grid_view</span>
+      <p class="text-[11px] font-bold">All</p>
+    </a>
+
+    <a id="tab-sleep" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">bedtime</span>
+      <p class="text-[11px] font-bold">Sleep</p>
+    </a>
+
+    <a id="tab-exercise" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">fitness_center</span>
+      <p class="text-[11px] font-bold">Exercise</p>
+    </a>
+
+    <a id="tab-study" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 py-3 transition-all" style="border-color: #f97316; color: #f97316;" href="#">
+      <span class="material-symbols-outlined mb-1">menu_book</span>
+      <p class="text-[11px] font-bold">Study</p>
+    </a>
+
+    <a id="tab-water" class="flex min-w-[72px] flex-1 flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 py-3 transition-all hover:text-primary" href="#">
+      <span class="material-symbols-outlined mb-1">water_drop</span>
+      <p class="text-[11px] font-bold">Water</p>
+    </a>
+  </div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 p-6 space-y-8">
+<!-- Today's Summary -->
+<!-- Pomodoro Timer -->
+<section class="flex flex-col items-center justify-center py-4">
+<div class="relative flex items-center justify-center w-80 h-80 rounded-full bg-white dark:bg-slate-900 shadow-[0_20px_50px_rgba(249,115,22,0.15)] dark:shadow-none">
+<!-- Outer Glow/Background Ring -->
+<div class="absolute inset-0 rounded-full border-[10px] border-orange-50/50 dark:border-orange-900/5"></div>
+<!-- Progress Ring -->
+<svg class="absolute w-full h-full -rotate-90" viewbox="0 0 320 320">
+<circle class="text-primary" cx="160" cy="160" fill="transparent" r="148" stroke="currentColor" stroke-dasharray="930" stroke-dashoffset="232" stroke-linecap="round" stroke-width="12" style="color: #f97316;"></circle>
+</svg>
+<!-- Decorative inner subtle ring -->
+<div class="absolute inset-6 rounded-full border border-orange-100/30 dark:border-orange-900/10"></div>
+<div class="text-center z-10">
+<p class="text-[5.5rem] font-extrabold text-slate-800 dark:text-slate-100 tracking-tight leading-none" style="font-family: 'Manrope', sans-serif;">25:00</p>
+<p class="text-primary font-bold uppercase tracking-[0.4em] text-[10px] mt-4" style="color: #f97316;">Focus Session</p>
+</div>
+</div>
+<!-- Controls -->
+<div class="flex gap-4 mt-12 w-full max-w-sm">
+    <button class="flex-[1.5] flex items-center justify-center gap-2 text-white font-extrabold py-5 rounded-2xl shadow-xl shadow-orange-500/30 active:scale-95 transition-all" style="background-color: #f97316;">
+        <span class="material-symbols-outlined fill-1" style="color: white;">play_arrow</span> Start
+    </button>
+
+    <button class="flex-1 flex items-center justify-center gap-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold py-5 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm active:scale-95 transition-all">
+        <span class="material-symbols-outlined" style="color: #f97316;">pause</span> Pause
+    </button>
+
+    <button class="flex h-16 w-16 items-center justify-center bg-slate-50 dark:bg-slate-800 text-slate-400 rounded-2xl border border-slate-100 dark:border-slate-700 active:scale-95 transition-all">
+        <span class="material-symbols-outlined" style="color: #f97316;">refresh</span>
+    </button>
+</div>
+</section>
+<!-- Timer Settings -->
+<section class="space-y-4 pb-20">
+    <div class="flex items-center gap-3 mb-2">
+        <div class="bg-orange-500/10 p-2 rounded-xl">
+            <span class="material-symbols-outlined text-xl block" style="color: #f97316;">settings_suggest</span>
+        </div>
+        <h3 class="text-lg font-extrabold text-slate-800 dark:text-slate-100">Timer Settings</h3>
+    </div>
+
+    <div class="space-y-3">
+        <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm">
+            <div>
+                <p class="font-bold text-slate-800 dark:text-slate-100">Focus</p>
+                <p class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Minutes</p>
+            </div>
+            <div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-1.5 rounded-xl">
+                <button class="size-9 flex items-center justify-center rounded-lg bg-white dark:bg-slate-700 text-slate-400 shadow-sm active:scale-90 transition-transform">-</button>
+                <span class="font-black text-xl w-8 text-center" style="color: #f97316;">25</span>
+                <button class="size-9 flex items-center justify-center rounded-lg bg-orange-500/10 shadow-sm active:scale-90 transition-transform" style="color: #f97316;">+</button>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm">
+            <div>
+                <p class="font-bold text-slate-800 dark:text-slate-100">Break</p>
+                <p class="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Minutes</p>
+            </div>
+            <div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-1.5 rounded-xl">
+                <button class="size-9 flex items-center justify-center rounded-lg bg-white dark:bg-slate-700 text-slate-400 shadow-sm active:scale-90 transition-transform">-</button>
+                <span class="font-black text-xl w-8 text-center" style="color: #f97316;">5</span>
+                <button class="size-9 flex items-center justify-center rounded-lg bg-orange-500/10 shadow-sm active:scale-90 transition-transform" style="color: #f97316;">+</button>
+            </div>
+        </div>
+    </div>
+</section></div>
+</div>
+</section>
+</main>
+<!-- Bottom Menu -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 py-2 pb-6 flex items-center z-30 px-8">
+    
+    <div class="flex justify-between items-center w-full">
+        <a id="menu-dashboard" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">grid_view</span>
+            <span class="text-[10px] font-bold">Dashboard</span>
+        </a>
+        <a id="menu-habits" class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined text-2xl fill-1">format_list_bulleted</span>
+            <span class="text-[10px] font-bold">Habits</span>
+        </a>
+        <a id="menu-history" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">history</span>
+            <span class="text-[10px] font-bold">History</span>
+        </a>
+        <a id="menu-settings" class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <span class="text-[10px] font-bold">Settings</span>
+        </a>
+    </div> </nav>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+<script src="/js/studyLog.js"></script>
+</body></html>
