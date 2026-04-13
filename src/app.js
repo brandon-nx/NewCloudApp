@@ -53,8 +53,8 @@ app.get("/health", (req, res) => {
 });
 
 // 7. Start Server
-app.listen(PORT, () => {
-  console.log(`LifeTrack running at http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 // const express = require("express");

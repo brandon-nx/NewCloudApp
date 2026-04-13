@@ -1,0 +1,23 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DB_USER=postgres
+      - DB_HOST=34.158.53.109
+      - DB_NAME=postgres
+      - DB_PASSWORD=your_actual_password
+      - DB_CA=|
+          -----BEGIN CERTIFICATE-----
+          (Paste contents of server-ca.pem here)
+          -----END CERTIFICATE-----
+      - DB_CERT=|
+          -----BEGIN CERTIFICATE-----
+          (Paste contents of client-cert.pem here)
+          -----END CERTIFICATE-----
+      - DB_KEY=|
+          -----BEGIN RSA PRIVATE KEY-----
+          (Paste contents of client-key.pem here)
+          -----END RSA PRIVATE KEY-----
