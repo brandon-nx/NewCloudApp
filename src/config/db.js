@@ -1,24 +1,42 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require("sequelize");
 
-// No more fs.readFileSync! We use the strings from the environment.
-const sequelize = new Sequelize(
-  process.env.DB_NAME, 
-  process.env.DB_USER, 
-  process.env.DB_PASSWORD, 
-  {
-    host: process.env.DB_HOST,
-    dialect: 'postgres',
-    port: 5432,
-    dialectOptions: {
-      ssl: {
-        rejectUnauthorized: true,
-        // These refer to the names we just set in the Cloud Console
-        ca: process.env.DB_CA,
-        key: process.env.DB_KEY,
-        cert: process.env.DB_CERT,
-      }
+const isCloudRun = !!process.env.K_SERVICE;
+const connectionName = process.env.INSTANCE_CONNECTION_NAME;
+
+let sequelize;
+
+if (isCloudRun && connectionName) {
+  sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+      dialect: "postgres",
+      host: `/cloudsql/${connectionName}`,
+      port: 5432,
+      logging: false,
     }
-  }
-);
+  );
+} else {
+  sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+      dialect: "postgres",
+      host: process.env.DB_HOST,
+      port: 5432,
+      dialectOptions: {
+        ssl: {
+          rejectUnauthorized: true,
+          ca: process.env.DB_CA,
+          key: process.env.DB_KEY,
+          cert: process.env.DB_CERT,
+        },
+      },
+      logging: false,
+    }
+  );
+}
 
 module.exports = sequelize;
