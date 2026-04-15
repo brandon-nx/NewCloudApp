@@ -1,13 +1,20 @@
 FROM node:20-slim
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
+# Copy package files
 COPY package*.json ./
-RUN npm install
 
+# Install dependencies
+RUN npm install --production
+
+# Copy everything else
 COPY . .
 
-ENV PORT=8080
+# Ensure the port is set
+ENV PORT 8080
 EXPOSE 8080
 
-CMD ["npm", "start"]
+# IMPORTANT: Make sure 'npm start' points to the right file in package.json
+# If your main file is inside a folder, use: CMD ["node", "src/index.js"] 
+CMD [ "npm", "start" ]

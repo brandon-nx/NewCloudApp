@@ -5,10 +5,9 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 
-// 1. Load Environment Variables
 dotenv.config();
 
-const db = require('./config/db'); 
+// Add API route imports back
 const authRoutes = require("./routes/authRoutes");
 const habitRoutes = require("./routes/habitRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
@@ -39,25 +38,26 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 // 4. Static Files (Serves CSS/JS from public folder)
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // 5. HTML Page Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '..', "public", "pages", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "public", "pages", "index.html"));
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, '..', "public", "pages", "login.html"));
+  res.sendFile(path.join(__dirname, "..", "public", "pages", "login.html"));
 });
 
 app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, '..', "public", "pages", "register.html"));
+  res.sendFile(path.join(__dirname, "..", "public", "pages", "register.html"));
 });
 
 app.get("/dashboard", (req, res) => {
-  res.sendFile(path.join(__dirname, '..', "public", "pages", "dashboard.html"));
+  res.sendFile(path.join(__dirname, "..", "public", "pages", "dashboard.html"));
 });
 
 app.get("/habits", (req, res) => {
@@ -105,15 +105,24 @@ app.use("/api/dashboard", dashboardRoutes);
 
 // 7. Health Check
 app.get("/health", (req, res) => {
-  res.status(200).send("Database and Server are healthy");
+  res.status(200).send("OK");
 });
 
-// 8. Error Handling (404 for any other undefined routes)
-app.use((req, res) => {
-  res.status(404).send("404: Page Not Found");
-});
+app.listen(PORT, "0.0.0.0", async () => {
+  console.log(`Server running on port ${PORT}`);
 
-// 9. Start Server
-app.listen(PORT, () => {
-  console.log(`🚀 LifeTrack running at http://localhost:${PORT}`);
+  try {
+    require("./config/firebase");
+    console.log("Firebase initialized");
+  } catch (err) {
+    console.error("Firebase init failed:", err);
+  }
+
+  try {
+    const db = require("./config/db");
+    await db.authenticate();
+    console.log("Database connected");
+  } catch (err) {
+    console.error("Database connection failed:", err);
+  }
 });
