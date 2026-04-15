@@ -1,3 +1,33 @@
+import { auth } from "./firebase-config.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        try {
+            const token = await user.getIdToken();
+            
+            // This FETCH is what triggers the log in your terminal
+            const response = await fetch('/api/dashboard', { // Or /api/auth/profile, etc.
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                console.log(`✅ ${user.email} verified by backend.`);
+                // Now you can call your page-specific functions here
+                // e.g., loadProfileData();
+            }
+        } catch (error) {
+            console.error("Auth Error:", error);
+        }
+    } else {
+        // If they aren't logged in, kick them back to login
+        window.location.href = "/login";
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     
     // Helper function to handle navigation safely
