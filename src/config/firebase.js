@@ -1,10 +1,14 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("./serviceAccountKey.json");
+const path = require("path");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
+// Use path.join to look two levels up from 'src/config' to the root
+const serviceAccount = require(path.join(__dirname, "..", "..", "serviceAccountKey.json"));
 
-console.log("✅ Firebase Admin SDK Initialized!");
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+  console.log("✅ Firebase Admin SDK Initialized!");
+}
 
 module.exports = admin;
