@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { Sequelize } = require("sequelize");
 
 const isCloudRun = !!process.env.K_SERVICE;
@@ -29,9 +30,12 @@ if (isCloudRun && connectionName) {
       dialectOptions: {
         ssl: {
           rejectUnauthorized: true,
-          ca: process.env.DB_CA,
-          key: process.env.DB_KEY,
-          cert: process.env.DB_CERT,
+          // Use readFileSync to load the ACTUAL certificate data
+          ca: fs.readFileSync(process.env.DB_CA),
+          key: fs.readFileSync(process.env.DB_KEY),
+          cert: fs.readFileSync(process.env.DB_CERT),
+
+          checkServerIdentity: () => undefined,
         },
       },
       logging: false,

@@ -58,91 +58,73 @@
 <!-- Goal Cards Container -->
 <div class="px-4 flex flex-col gap-4">
 <!-- Sleep Goal Card -->
-<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between group">
-    <div class="flex items-center gap-4">
-        <div class="flex size-12 items-center justify-center rounded-xl bg-[#9333ea]/10 dark:bg-[#9333ea]/20 text-[#9333ea]">
-            <span class="material-symbols-outlined text-[28px]">bedtime</span>
-        </div>
-        <div class="flex flex-col">
-            <span class="text-slate-900 dark:text-slate-100 font-bold text-base leading-tight">Sleep</span>
-            <span class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Hours / Night</span>
-        </div>
-    </div>
-    
-    <div class="flex items-center gap-3">
-        <button class="size-9 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
-            <span class="material-symbols-outlined text-xl">remove</span>
-        </button>
-        
-        <span class="text-xl font-bold w-8 text-center text-primary">8</span>
-        <button class="size-9 flex items-center justify-center rounded-full bg-primary text-white active:scale-90 transition-transform shadow-lg shadow-primary/20">
-            <span class="material-symbols-outlined text-xl">add</span>
-        </button>
-    </div>
-</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="flex size-12 items-center justify-center rounded-xl bg-[#9333ea]/10 text-[#9333ea]">
+                            <span class="material-symbols-outlined text-[28px]">bedtime</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-900 dark:text-slate-100 font-bold">Sleep</span>
+                            <span class="text-slate-500 text-xs uppercase">Hours / Night</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button id="sleep-minus" class="size-9 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"><span class="material-symbols-outlined">remove</span></button>
+                        <span id="sleep-val" class="text-xl font-bold w-8 text-center text-primary">0</span>
+                        <button id="sleep-plus" class="size-9 flex items-center justify-center rounded-full bg-primary text-white"><span class="material-symbols-outlined">add</span></button>
+                    </div>
+                </div>
 <!-- Exercise Goal Card -->
-<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between group">
-<div class="flex items-center gap-4">
-<div class="flex size-12 items-center justify-center rounded-xl bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
-<span class="material-symbols-outlined text-[28px]">fitness_center</span>
-</div>
-<div class="flex flex-col">
-<span class="text-slate-900 dark:text-slate-100 font-bold text-base leading-tight">Exercise</span>
-<span class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Minutes / Day</span>
-</div>
-</div>
-<div class="flex items-center gap-3">
-<button class="size-9 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
-<span class="material-symbols-outlined text-xl">remove</span>
-</button>
-<span class="text-xl font-bold w-8 text-center text-primary">45</span>
-<button class="size-9 flex items-center justify-center rounded-full bg-primary text-white active:scale-90 transition-transform shadow-lg shadow-primary/20">
-<span class="material-symbols-outlined text-xl">add</span>
-</button>
-</div>
-</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="flex size-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                            <span class="material-symbols-outlined text-[28px]">water_drop</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-900 dark:text-slate-100 font-bold">Water</span>
+                            <span class="text-slate-500 text-xs uppercase">ML / Day</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button id="water-minus" class="size-9 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"><span class="material-symbols-outlined">remove</span></button>
+                        <span id="water-val" class="text-xl font-bold text-center text-primary min-w-[60px]">0</span>
+                        <button id="water-plus" class="size-9 flex items-center justify-center rounded-full bg-primary text-white"><span class="material-symbols-outlined">add</span></button>
+                    </div>
+                </div>
 <!-- Study Goal Card -->
-<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between group">
-<div class="flex items-center gap-4">
-<div class="flex size-12 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
-<span class="material-symbols-outlined text-[28px]">menu_book</span>
-</div>
-<div class="flex flex-col">
-<span class="text-slate-900 dark:text-slate-100 font-bold text-base leading-tight">Study</span>
-<span class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">Hours / Day</span>
-</div>
-</div>
-<div class="flex items-center gap-3">
-<button class="size-9 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
-<span class="material-symbols-outlined text-xl">remove</span>
-</button>
-<span class="text-xl font-bold w-8 text-center text-primary">2.5</span>
-<button class="size-9 flex items-center justify-center rounded-full bg-primary text-white active:scale-90 transition-transform shadow-lg shadow-primary/20">
-<span class="material-symbols-outlined text-xl">add</span>
-</button>
-</div>
-</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="flex size-12 items-center justify-center rounded-xl bg-orange-50 text-orange-600">
+                            <span class="material-symbols-outlined text-[28px]">fitness_center</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-900 dark:text-slate-100 font-bold">Exercise</span>
+                            <span class="text-slate-500 text-xs uppercase">Minutes / Day</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button id="exercise-minus" class="size-9 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"><span class="material-symbols-outlined">remove</span></button>
+                        <span id="exercise-val" class="text-xl font-bold w-8 text-center text-primary">0</span>
+                        <button id="exercise-plus" class="size-9 flex items-center justify-center rounded-full bg-primary text-white"><span class="material-symbols-outlined">add</span></button>
+                    </div>
+                </div>
 <!-- Water Goal Card -->
-<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between group">
-<div class="flex items-center gap-4">
-<div class="flex size-12 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
-<span class="material-symbols-outlined text-[28px]">water_drop</span>
-</div>
-<div class="flex flex-col">
-<span class="text-slate-900 dark:text-slate-100 font-bold text-base leading-tight">Water</span>
-<span class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider mt-1">ML / DAY</span>
-</div>
-</div>
-<div class="flex items-center gap-3">
-<button class="size-9 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 active:scale-90 transition-transform">
-<span class="material-symbols-outlined text-xl">remove</span>
-</button>
-<span class="text-xl font-bold text-center text-primary min-w-[60px]">2500</span>
-<button class="size-9 flex items-center justify-center rounded-full bg-primary text-white active:scale-90 transition-transform shadow-lg shadow-primary/20">
-<span class="material-symbols-outlined text-xl">add</span>
-</button>
-</div>
-</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="flex size-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                            <span class="material-symbols-outlined text-[28px]">menu_book</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-slate-900 dark:text-slate-100 font-bold">Study</span>
+                            <span class="text-slate-500 text-xs uppercase">Hours / Day</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button id="study-minus" class="size-9 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"><span class="material-symbols-outlined">remove</span></button>
+                        <span id="study-val" class="text-xl font-bold w-8 text-center text-primary">0</span>
+                        <button id="study-plus" class="size-9 flex items-center justify-center rounded-full bg-primary text-white"><span class="material-symbols-outlined">add</span></button>
+                    </div>
+                </div>
 <!-- Tip Card -->
 </div>
 </main>

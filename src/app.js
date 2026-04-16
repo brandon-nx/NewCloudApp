@@ -8,10 +8,12 @@ const helmet = require("helmet");
 dotenv.config();
 
 // Add API route imports back
+const db = require('./config/db'); 
 const authRoutes = require("./routes/authRoutes");
 const habitRoutes = require("./routes/habitRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const admin = require('./config/firebase');
+const goalRoutes = require("./routes/goalRoutes"); // Add this
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -102,6 +104,7 @@ app.get("/history-list", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/habits", habitRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/goals", goalRoutes);
 
 // 7. Health Check
 app.get("/health", (req, res) => {

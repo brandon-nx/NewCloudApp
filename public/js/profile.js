@@ -6,24 +6,41 @@ onAuthStateChanged(auth, async (user) => {
         try {
             const token = await user.getIdToken();
             
-            // This FETCH is what triggers the log in your terminal
-            const response = await fetch('/api/dashboard', { // Or /api/auth/profile, etc.
+            // 1. Fetch User Profile (Name)
+            const profileResponse = await fetch('/api/dashboard', {
                 method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+                headers: { 'Authorization': `Bearer ${token}` }
             });
 
-            if (response.ok) {
-                console.log(`✅ ${user.email} verified by backend.`);
-                // Now you can call your page-specific functions here
-                // e.g., loadProfileData();
+            if (profileResponse.ok) {
+                const userData = await profileResponse.json();
+                const nameElement = document.getElementById("user-name");
+                if (nameElement) {
+                    nameElement.textContent = userData.full_name || user.displayName || "User";
+                }
             }
+
+            // 2. Fetch User Goals (NEW)
+            const goalsResponse = await fetch('/api/goals/my-targets', {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (goalsResponse.ok) {
+                const goals = await goalsResponse.json();
+                
+                // Update the UI with data from database
+                // Habit IDs: 1=Sleep, 2=Exercise, 3=Study, 4=Water (Verify these match your DB!)
+                if (goals["1"]) document.getElementById('display-sleep').textContent = `${goals["1"]}h daily`;
+                if (goals["4"]) document.getElementById('display-water').textContent = `${goals["4"]}ml`;
+                if (goals["2"]) document.getElementById('display-exercise').textContent = `${goals["2"]}m daily`;
+                if (goals["3"]) document.getElementById('display-study').textContent = `${goals["3"]}h daily`;
+            }
+
         } catch (error) {
-            console.error("Auth Error:", error);
+            console.error("Profile Load Error:", error);
         }
     } else {
-        // If they aren't logged in, kick them back to login
         window.location.href = "/login";
     }
 });

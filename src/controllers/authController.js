@@ -1,4 +1,5 @@
 const admin = require("../config/firebase");
+// pool or sequelize instance
 const sequelize = require("../config/db");
 
 exports.registerOrLogin = async (req, res) => {
@@ -12,6 +13,20 @@ exports.registerOrLogin = async (req, res) => {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     const { uid, email } = decodedToken;
 
+    /*const query = `
+    //  INSERT INTO users (firebase_uid, email, full_name) 
+    //  VALUES ($1, $2, $3) 
+    //  ON CONFLICT (firebase_uid) 
+    //  DO UPDATE SET 
+    //    last_login = CURRENT_TIMESTAMP,
+    //    full_name = COALESCE(users.full_name, EXCLUDED.full_name) 
+    //  RETURNING *;
+    //`;
+    
+    const result = await pool.query(query, [uid, email, fullName]);
+    const user = result.rows[0];*/
+
+    
     const query = `
       INSERT INTO users (firebase_uid, email, full_name, last_login)
       VALUES ($1, $2, $3, CURRENT_TIMESTAMP)
