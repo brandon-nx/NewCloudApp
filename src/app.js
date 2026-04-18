@@ -13,7 +13,8 @@ const authRoutes = require("./routes/authRoutes");
 const habitRoutes = require("./routes/habitRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const admin = require('./config/firebase');
-const goalRoutes = require("./routes/goalRoutes"); // Add this
+const goalRoutes = require("./routes/goalRoutes"); 
+const historyRoutes = require("./routes/historyRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -105,6 +106,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/habits", habitRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/goals", goalRoutes);
+app.use("/api/history", historyRoutes);
 
 // 7. Health Check
 app.get("/health", (req, res) => {

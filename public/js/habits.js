@@ -200,7 +200,7 @@ function fillStudyCard(habits) {
 }
 
 function fillWaterCard(habits) {
-  const waterHabit = getHabitByName(habits, "Water");
+  const waterHabit = getHabitByName(habits, "Water Intake");
   const currentDisplay = document.getElementById("water-current-display");
   const goalDisplay = document.getElementById("water-goal-display");
   const progressBar = document.getElementById("water-progress-bar");

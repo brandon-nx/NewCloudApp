@@ -1,23 +1,26 @@
-const db = require("../config/db");
+const db = require("../config/db"); // This is your Sequelize instance
+const { QueryTypes } = require("sequelize");
 
 const getDashboard = async (req, res) => {
     try {
-        // req.user.uid is populated by your 'protect' middleware (verifyToken)
         const firebase_uid = req.user.uid;
 
-        // Query the PostgreSQL users table
+        // Correct Sequelize raw query syntax
         const userResult = await db.query(
             "SELECT full_name, email FROM users WHERE firebase_uid = $1",
-            [firebase_uid]
+            {
+                bind: [firebase_uid],
+                type: QueryTypes.SELECT
+            }
         );
 
-        if (userResult.rows.length === 0) {
+        // Sequelize SELECT queries return an array directly
+        if (userResult.length === 0) {
             return res.status(404).json({ error: "User not found" });
         }
 
-        const userData = userResult.rows[0];
+        const userData = userResult[0];
 
-        // Send the full_name back to the frontend
         res.json({
             full_name: userData.full_name,
             email: userData.email

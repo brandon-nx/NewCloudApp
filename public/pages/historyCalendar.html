@@ -81,14 +81,17 @@
 <section class="bg-white dark:bg-background-dark p-4 border-b border-slate-100 dark:border-slate-800">
 <div class="flex flex-col gap-2">
 <div class="flex items-center justify-between mb-2">
-<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
-<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">chevron_left</span>
-</button>
-<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">October 2023</p>
-<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
-<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">chevron_right</span>
-</button>
+    <button id="prev-month" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+        <span class="material-symbols-outlined text-slate-600 dark:text-slate-400">chevron_left</span>
+    </button>
+    
+    <p id="current-month-display" class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Month Year</p>
+    
+    <button id="next-month" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+        <span class="material-symbols-outlined text-slate-600 dark:text-slate-400">chevron_right</span>
+    </button>
 </div>
+
 <div class="grid grid-cols-7 text-center mb-1">
 <span class="text-slate-400 text-xs font-bold py-1">S</span>
 <span class="text-slate-400 text-xs font-bold py-1">M</span>
@@ -98,7 +101,7 @@
 <span class="text-slate-400 text-xs font-bold py-1">F</span>
 <span class="text-slate-400 text-xs font-bold py-1">S</span>
 </div>
-<div class="grid grid-cols-7 gap-y-1">
+<div id="calendar-grid" class="grid grid-cols-7 gap-y-1">
 <!-- Example Week -->
 <button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">24</button>
 <button class="h-10 w-full text-slate-400 text-sm font-medium flex items-center justify-center">25</button>
@@ -121,75 +124,136 @@
 </section>
 <!-- Selected Day Progress -->
 <main class="flex-1 p-4 bg-background-light dark:bg-background-dark space-y-4">
-<div class="flex items-center justify-between mb-2">
-<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">Progress - Oct 5</h3>
-<span class="text-xs font-semibold px-2 py-1 bg-primary/10 text-primary rounded-full">85% Complete</span>
-</div>
+    <div class="flex items-center justify-between mb-2">
+        <h3 id="selected-day-title" class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">
+            Progress - today
+        </h3>
+        <span id="completion-rate-badge" class="text-xs font-semibold px-2 py-1 bg-primary/10 text-primary rounded-full">
+            0% Complete
+        </span>
+    </div>
 <!-- Habit Cards -->
-<div class="grid grid-cols-1 gap-4">
-<!-- Sleep Card -->
-<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-<div class="flex items-center gap-4">
-<div class="flex size-12 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-<span class="material-symbols-outlined">dark_mode</span>
+ <div id="habit-cards-container" class="grid grid-cols-1 gap-4">
+        
+    <div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-4">
+                <div class="flex size-12 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Sleep</p>
+                    <div class="flex items-center gap-1.5">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-normal">
+                            <span id="sleep-habit-actual">7h 30m</span> / 
+                            <span id="sleep-habit-target">8h</span>
+                        </p>
+                        <span class="material-symbols-outlined !text-[14px] text-emerald-500" style="font-variation-settings: 'FILL' 1">check_circle</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                </button>
+                <button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-red-500 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-4">
+                <div class="flex size-12 items-center justify-center rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+                    <span class="material-symbols-outlined">fitness_center</span>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Exercise</p>
+                    <div class="flex items-center gap-1.5">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-normal">
+                            <span id="exercise-habit-actual">45m</span> / 
+                            <span id="exercise-habit-target">60m</span>
+                        </p>
+                        <span class="material-symbols-outlined !text-[14px] text-emerald-500" style="font-variation-settings: 'FILL' 1">check_circle</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                </button>
+                <button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-red-500 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-4 relative">
+                <div class="flex size-12 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+                    <span class="material-symbols-outlined">menu_book</span>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Study</p>
+                    <div class="flex items-center gap-1.5">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-normal">
+                            <span id="study-habit-actual">2h</span> / 
+                            <span id="study-habit-target">2h</span>
+                        </p>
+                        <span class="material-symbols-outlined !text-[14px] text-emerald-500" style="font-variation-settings: 'FILL' 1">check_circle</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                </button>
+                <button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-red-500 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-4">
+                <div class="flex size-12 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary">
+                    <span class="material-symbols-outlined">water_drop</span>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Water</p>
+                    <div class="flex items-center gap-1.5">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-normal">
+                            <span id="water-habit-actual">1500ml</span> / 
+                            <span id="water-habit-target">2000ml</span>
+                        </p>
+                        <span class="material-symbols-outlined !text-[14px] text-emerald-500" style="font-variation-settings: 'FILL' 1">check_circle</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                </button>
+                <button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-red-500 transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    
+
+    <!-- No records state -->
+    <div id="no-records-state" class="hidden flex flex-col items-center justify-center py-12 px-6 text-center bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-full mb-4">
+        <span class="material-symbols-outlined text-4xl text-slate-400">history_toggle_off</span>
+    </div>
+    
+    <p class="text-slate-900 dark:text-slate-100 font-bold text-lg">No records found</p>
+    <p class="text-slate-500 dark:text-slate-400 text-sm max-w-[200px] mt-1">
+        You haven't logged any habits for this date yet.
+    </p>
 </div>
-<div class="flex flex-col">
-<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Sleep</p>
-<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">7h 30m / 8h</p>
-</div>
-</div>
-<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-</div>
-<!-- Exercise Card -->
-<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-<div class="flex items-center gap-4">
-<div class="flex size-12 items-center justify-center rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
-<span class="material-symbols-outlined">fitness_center</span>
-</div>
-<div class="flex flex-col">
-<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Exercise</p>
-<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">45m / 60m</p>
-</div>
-</div>
-<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-</div>
-<!-- Study Card -->
-<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-<div class="flex items-center gap-4 relative">
-<div class="flex size-12 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
-<span class="material-symbols-outlined">menu_book</span>
-</div>
-<div class="flex flex-col">
-<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Study</p>
-<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">2h 00m / 2h</p>
-</div>
-</div>
-<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-</div>
-<!-- Water Card -->
-<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800">
-<div class="flex items-center gap-4">
-<div class="flex size-12 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary">
-<span class="material-symbols-outlined">water_drop</span>
-</div>
-<div class="flex flex-col">
-<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">Water</p>
-<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">1500ml / 2000ml</p>
-</div>
-</div>
-<button class="flex items-center justify-center rounded-lg h-9 w-9 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-[20px]">edit</span>
-</button>
-</div>
-</div>
-<!-- Visual Graph Summary Placeholder -->
-<div class="h-20"></div>
+    <div class="h-20"></div>
 </main>
 <!-- Bottom Menu -->
 <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 py-2 pb-6 flex items-center z-30 px-8">

@@ -146,19 +146,15 @@ function updatePreviewUI() {
 function setSelectedAmount(amount) {
   const parsed = Math.max(0, Number(amount || 0));
   const intakeInput = document.getElementById("water-intake-input");
-  const customInput = document.getElementById("water-custom-amount");
   const presetButtons = document.querySelectorAll(".preset-chip");
 
   if (intakeInput) intakeInput.value = String(parsed);
 
+  // Update visual state of preset chips
   presetButtons.forEach((btn) => {
     const preset = Number(btn.dataset.preset || "0");
     btn.classList.toggle("active", preset === parsed);
   });
-
-  if (customInput && ![150, 250, 500, 750].includes(parsed) && parsed > 0) {
-    customInput.value = String(parsed);
-  }
 
   updatePreviewUI();
 }
@@ -234,8 +230,10 @@ async function loadWaterFromBackend() {
       throw new Error("Failed to fetch water data.");
     }
 
-    const waterHabit =
-      data.find((habit) => String(habit.name || "").toLowerCase() === "water") || null;
+    const waterHabit = data.find((habit) => 
+        habit.habit_type_id === 4 || 
+        String(habit.name || "").toLowerCase() === "water intake"
+    ) || null;
 
     const currentMl = Number(waterHabit?.current_value || 0);
     localStorage.setItem("water_current_ml", String(currentMl));
@@ -310,9 +308,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
   setupPresetButtons();
   setupAdjustButtons();
-  setupCustomAmount();
   setupFormSubmission();
-  setSelectedAmount(250);
+  setSelectedAmount(0);
   updatePreviewUI();
 });
 

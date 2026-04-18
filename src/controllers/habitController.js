@@ -567,7 +567,7 @@ exports.logWater = async (req, res) => {
       });
     }
 
-    const waterHabitTypeId = await getHabitTypeIdByName("water", transaction);
+    const waterHabitTypeId = await getHabitTypeIdByName("Water Intake", transaction);
 
     if (!waterHabitTypeId) {
       await transaction.rollback();
@@ -604,7 +604,7 @@ exports.logWater = async (req, res) => {
     const waterHabit = await upsertHabitValue({
       transaction,
       firebaseUid,
-      habitName: "Water",
+      habitName: "Water Intake",
       icon: "water_drop",
       currentValue: parsedIntakeMl,
       goalValue: 2500,
