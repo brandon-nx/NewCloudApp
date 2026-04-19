@@ -91,17 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     navigateTo('menu-habits', '/habits');
     navigateTo('menu-history', '/history');
     navigateTo('menu-settings', '/profile');
+    navigateTo('profile-btn', '/profile');
 
-    // 5. LOGOUT LOGIC
-    const profileBtn = document.getElementById('profile-btn');
-    if (profileBtn) {
-        profileBtn.addEventListener('click', async () => {
-            // For now, let's make the profile button log you out 
-            // Or you can redirect to profile page if you prefer
-            if (confirm("Do you want to logout?")) {
-                await signOut(auth);
-                window.location.href = "/login";
-            }
-        });
-    }
+    
 });

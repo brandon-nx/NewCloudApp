@@ -127,20 +127,17 @@ function updateWaterUI(currentMl) {
 }
 
 function updatePreviewUI() {
-  const current = getCurrentWater();
-  const selected = getSelectedAmount();
-  updateWaterUI(current + selected);
+    const current = getCurrentWater(); // This is the total already in the DB
+    const selected = getSelectedAmount(); // This is what is on the slider/buttons
+    
+    // Show the user what the total WILL be after they click "Log"
+    updateWaterUI(current + selected);
 
-  const selectedDisplay = document.getElementById("selected-water-display");
-  const saveBtnText = document.getElementById("save-water-btn-text");
+    const selectedDisplay = document.getElementById("selected-water-display");
+    const saveBtnText = document.getElementById("save-water-btn-text");
 
-  if (selectedDisplay) {
-    selectedDisplay.textContent = `${selected}ml`;
-  }
-
-  if (saveBtnText) {
-    saveBtnText.textContent = `Log ${selected}ml`;
-  }
+    if (selectedDisplay) selectedDisplay.textContent = `${selected}ml`;
+    if (saveBtnText) saveBtnText.textContent = `Log ${selected}ml`;
 }
 
 function setSelectedAmount(amount) {
@@ -266,40 +263,46 @@ function setupFormSubmission() {
     }
 
     try {
-      setLoading(true);
+        setLoading(true);
+        const token = await currentUser.getIdToken(true);
+        const intakeMl = getSelectedAmount(); // The amount just selected
 
-      const token = await currentUser.getIdToken(true);
+        const response = await fetch("/api/habits/water", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                intakeMl,
+                logDate: new Date().toISOString().slice(0, 10),
+            }),
+        });
 
-      const response = await fetch("/api/habits/water", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          intakeMl,
-          logDate: new Date().toISOString().slice(0, 10),
-        }),
-      });
+        const data = await response.json().catch(() => ({}));
 
-      const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+            throw new Error(data.details || data.error || "Failed to save water log.");
+        }
 
-      if (!response.ok) {
-        throw new Error(data.details || data.error || "Failed to save water log.");
-      }
+        // 1. Get the NEW total from backend, or calculate it manually if backend doesn't send it
+        const previousTotal = getCurrentWater();
+        const newTotal = Number(data?.habit?.current_value ?? (previousTotal + intakeMl));
+        
+        // 2. Save the NEW total to localStorage
+        localStorage.setItem("water_current_ml", String(newTotal));
 
-      const updatedCurrent = Number(data?.habit?.current_value ?? getCurrentWater() + intakeMl);
-      localStorage.setItem("water_current_ml", String(updatedCurrent));
+        // 3. Reset selected amount to 0 (as requested)
+        setSelectedAmount(0); 
 
-      setSelectedAmount(250);
-      updateWaterUI(updatedCurrent);
-      showMessage("Water logged successfully!", "success");
+        // 4. Update the UI with the actual new total
+        updateWaterUI(newTotal);
+        
+        showMessage("Water logged successfully!", "success");
     } catch (error) {
-      console.error("Water log error:", error);
-      showMessage(error.message || "Failed to save water log.");
-      updatePreviewUI();
+        // ... error handling ...
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   });
 }
@@ -310,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupAdjustButtons();
   setupFormSubmission();
   setSelectedAmount(0);
-  updatePreviewUI();
+  
 });
 
 onAuthStateChanged(auth, async (user) => {

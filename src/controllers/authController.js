@@ -33,7 +33,11 @@ exports.registerOrLogin = async (req, res) => {
       ON CONFLICT (firebase_uid)
       DO UPDATE SET
         email = EXCLUDED.email,
-        full_name = COALESCE(EXCLUDED.full_name, users.full_name),
+        full_name = CASE 
+            WHEN users.full_name IS NOT NULL AND users.full_name != 'User' AND users.full_name != ''
+            THEN users.full_name 
+            ELSE COALESCE(EXCLUDED.full_name, users.full_name)
+        END,
         last_login = CURRENT_TIMESTAMP,
         updated_at = CURRENT_TIMESTAMP
       RETURNING user_id, firebase_uid, email, full_name, last_login;

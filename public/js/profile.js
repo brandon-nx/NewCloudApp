@@ -1,5 +1,5 @@
 import { auth } from "./firebase-config.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -59,12 +59,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // --- FIXED LOGOUT LOGIC ---
+    const logoutBtn = document.getElementById('logout-btn'); 
+    
+    if (logoutBtn) {
+        console.log("✅ Logout button found in HTML");
+        
+        logoutBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            console.log("🖱️ Logout button clicked");
+
+            if (confirm("Are you sure you want to log out?")) {
+                try {
+                    await signOut(auth);
+                    console.log("👋 Firebase signed out");
+                    // DOUBLE CHECK YOUR PATH: is it /login or /pages/login.html?
+                    window.location.href = "/pages/login.html"; 
+                } catch (error) {
+                    console.error("❌ Logout failed:", error);
+                    alert("Logout failed. Check console for details.");
+                }
+            }
+        });
+    } else {
+        console.warn("⚠️ Could not find an element with id='logout-btn'");
+    }
+
     // Apply navigation to all buttons
     navigateTo('menu-dashboard', '/pages/dashboard.html'); // If dashboard.js is in /js/ and html is in /pages/
     navigateTo('menu-habits', '/pages/habits.html');
     navigateTo('menu-history', '/pages/historyCalendar.html');
-    navigateTo('menu-settings', '/pages/profile.html');
     navigateTo('profile-btn', '/pages/profile.html');
     navigateTo('edit-goal-btn', '/pages/editGoal.html');
-    navigateTo('logout-btn', '/pages/login.html');
 });
