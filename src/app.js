@@ -25,14 +25,46 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "https://www.gstatic.com", "https://cdn.tailwindcss.com"],
-        connectSrc: ["'self'", "https://identitytoolkit.googleapis.com", "https://securetoken.googleapis.com", "https://www.googleapis.com", "https://www.gstatic.com"],
-        imgSrc: ["'self'", "data:", "https://images.unsplash.com"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-        fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      },
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://www.gstatic.com",
+          "https://cdn.tailwindcss.com",
+          "https://apis.google.com"
+        ],
+        connectSrc: [
+          "'self'",
+          "https://identitytoolkit.googleapis.com",
+          "https://securetoken.googleapis.com",
+          "https://www.googleapis.com",
+          "https://www.gstatic.com",
+          "https://accounts.google.com",
+          "https://cloud-habit-tracker-fc4c6.firebaseapp.com"
+        ],
+        imgSrc: [
+          "'self'",
+          "data:",
+          "https://images.unsplash.com",
+          "https://lh3.googleusercontent.com"
+        ],
+        styleSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://fonts.googleapis.com"
+        ],
+        fontSrc: [
+          "'self'",
+          "https://fonts.gstatic.com"
+        ],
+        frameSrc: [
+          "'self'",
+          "https://accounts.google.com",
+          "https://cloud-habit-tracker-fc4c6.firebaseapp.com"
+        ]
+      }
     },
     crossOriginEmbedderPolicy: false,
+    crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" }
   })
 );
 

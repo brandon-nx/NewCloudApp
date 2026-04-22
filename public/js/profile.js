@@ -19,7 +19,7 @@ onAuthStateChanged(auth, async (user) => {
                 // Update Name
                 const nameElement = document.getElementById("user-name");
                 if (nameElement) {
-                    nameElement.textContent = data.full_name || user.displayName || "User";
+                    nameElement.textContent = data.username || user.displayName || "User";
                 }
 
                 // Update Stats Grid (Calculated from backend)

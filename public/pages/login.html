@@ -101,11 +101,8 @@
             </div>
 
             <div class="grid grid-cols-2 gap-4">
-                <button class="flex items-center justify-center gap-2 h-12 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <button id="googleBtn" class="flex items-center justify-center gap-2 h-12 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                     <span class="text-sm font-semibold">Google</span>
-                </button>
-                <button class="flex items-center justify-center gap-2 h-12 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                    <span class="text-sm font-semibold">Facebook</span>
                 </button>
             </div>
 
@@ -121,83 +118,3 @@
     <script type="module" src="/js/login.js"></script>
 </body>
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>LifeTrack - Login</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#137fec",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
-                    },
-                    fontFamily: { display: ["Manrope"] },
-                },
-            },
-        };
-    </script>
-</head>
-<body class="font-display">
-    <div class="app-container flex flex-col min-h-screen">
-        <div class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
-            <div id="closeBtn" class="text-slate-900 dark:text-slate-100 flex size-12 items-center justify-start cursor-pointer">
-                <span class="material-symbols-outlined text-2xl">close</span>
-            </div>
-            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold flex-1 text-center pr-12">LifeTrack</h2>
-        </div>
-
-        <div class="pb-3 mt-4">
-            <div class="flex border-b border-slate-200 dark:border-slate-800 px-4 justify-between">
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-[13px] pt-4 flex-1" href="/login">
-                    <p class="text-sm font-bold">Login</p>
-                </a>
-                <a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 pb-[13px] pt-4 flex-1" href="/register">
-                    <p class="text-sm font-bold">Sign Up</p>
-                </a>
-            </div>
-        </div>
-
-        <div class="flex flex-col gap-4 px-4 py-4 max-w-lg mx-auto w-full">
-            <label class="flex flex-col w-full">
-                <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold pb-2">Email Address</p>
-                <input id="email" class="form-input rounded-lg border-slate-200 dark:bg-slate-800 h-14 p-[15px]" placeholder="name@example.com" type="email"/>
-            </label>
-
-            <label class="flex flex-col w-full">
-                <div class="flex justify-between items-end pb-2">
-                    <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Password</p>
-                    <a class="text-primary text-xs font-bold hover:underline" href="#">Forgot password?</a>
-                </div>
-                <div class="flex w-full items-stretch">
-                    <input id="password" class="form-input flex-1 rounded-l-lg border-slate-200 dark:bg-slate-800 h-14 p-[15px]" placeholder="Enter your password" type="password"/>
-                    <div class="flex border border-l-0 border-slate-200 dark:bg-slate-800 items-center justify-center px-4 rounded-r-lg">
-                        <span class="material-symbols-outlined text-slate-400">visibility</span>
-                    </div>
-                </div>
-            </label>
-
-            <button id="loginBtn" class="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-colors mt-4">
-                Log In
-            </button>
-
-            <p class="text-center text-slate-500 text-sm mt-6">
-                Don't have an account?
-                <a class="text-primary font-bold hover:underline" href="/register">Sign Up now</a>
-            </p>
-        </div>
-    </div>
-
-    <script type="module" src="/js/login.js"></script>
-</body>
-</html> -->

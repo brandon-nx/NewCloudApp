@@ -1,5 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCGM_XgttKSThQIi-Xmz6mL93T11lxdjfs",
@@ -11,8 +11,11 @@ const firebaseConfig = {
   measurementId: "G-26211MTF8G"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Export Auth so register.js and login.js can use it
 export const auth = getAuth(app);
+
+export const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: "select_account"
+});

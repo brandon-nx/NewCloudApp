@@ -451,7 +451,7 @@ exports.getProfileStats = async (req, res) => {
 
     // Send the response back
     res.json({
-      full_name: userRows[0]?.username || "User", // Use the new username column
+      username: userRows[0]?.username || "User", // Use the new username column
       total_records: parseInt(totalRows[0]?.total || 0),
       avg_rate: parseInt(avgRows[0]?.avg_rate || 0),
       streak: parseInt(streakRows[0]?.streak || 0)

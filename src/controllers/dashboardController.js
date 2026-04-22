@@ -7,7 +7,7 @@ const getDashboard = async (req, res) => {
 
         // Correct Sequelize raw query syntax
         const userResult = await db.query(
-            "SELECT full_name, email FROM users WHERE firebase_uid = $1",
+            "SELECT username, email FROM users WHERE firebase_uid = $1",
             {
                 bind: [firebase_uid],
                 type: QueryTypes.SELECT
@@ -22,7 +22,7 @@ const getDashboard = async (req, res) => {
         const userData = userResult[0];
 
         res.json({
-            full_name: userData.full_name,
+            username: userData.username,
             email: userData.email
         });
 
