@@ -47,17 +47,21 @@ window.addEventListener("DOMContentLoaded", function () {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
+                const idToken = await user.getIdToken();
+
                 // STEP 3: Sync with your PostgreSQL Database via your API
                 try {
-                    await fetch('/api/register-user', { // Change this to your actual registration endpoint
+                    await fetch('/api/auth/register', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             firebase_uid: user.uid,
                             email: user.email,
-                            full_name: fullName // This is the value from your input
+                            full_name: fullName,
+                            idToken: idToken
                         })
                     });
+                    console.log("✅ Sync request sent to backend");
                 } catch (dbError) {
                     console.error("Failed to sync to SQL database:", dbError);
                 }

@@ -35,4 +35,6 @@ router.post("/login", authController.registerOrLogin);
 router.get('/my-habits', protect, habitController.getHabits);
 router.post('/log', protect, habitController.logHabit);
 
+router.get('/profile-stats', protect, habitController.getProfileStats);
+
 module.exports = router;

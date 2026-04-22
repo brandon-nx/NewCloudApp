@@ -16,4 +16,7 @@ router.post("/exercise", protect, habitController.logExercise);
 router.post("/study", protect, habitController.logStudy);
 router.post("/water", protect, habitController.logWater);
 
+router.get('/weekly-activity', protect, habitController.getWeeklyActivity);
+router.get('/profile-stats', protect, habitController.getProfileStats);
+
 module.exports = router;

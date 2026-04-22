@@ -6,21 +6,33 @@ onAuthStateChanged(auth, async (user) => {
         try {
             const token = await user.getIdToken();
             
-            // 1. Fetch User Profile (Name)
-            const profileResponse = await fetch('/api/dashboard', {
+            // 1. Fetch User Profile Stats (Name, Total, Avg Rate, Streak)
+            // Note: Changed endpoint to match the new controller logic
+            const profileResponse = await fetch('/api/habits/profile-stats', {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
             if (profileResponse.ok) {
-                const userData = await profileResponse.json();
+                const data = await profileResponse.json();
+                
+                // Update Name
                 const nameElement = document.getElementById("user-name");
                 if (nameElement) {
-                    nameElement.textContent = userData.full_name || user.displayName || "User";
+                    nameElement.textContent = data.full_name || user.displayName || "User";
                 }
+
+                // Update Stats Grid (Calculated from backend)
+                const totalElement = document.getElementById("stat-total");
+                const avgElement = document.getElementById("stat-avg");
+                const streakElement = document.getElementById("stat-streak");
+
+                if (totalElement) totalElement.textContent = data.total_records.toLocaleString();
+                if (avgElement) avgElement.textContent = `${data.avg_rate}%`;
+                if (streakElement) streakElement.textContent = `${data.streak} Days`;
             }
 
-            // 2. Fetch User Goals (NEW)
+            // 2. Fetch User Goals
             const goalsResponse = await fetch('/api/goals/my-targets', {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}` }
@@ -29,8 +41,7 @@ onAuthStateChanged(auth, async (user) => {
             if (goalsResponse.ok) {
                 const goals = await goalsResponse.json();
                 
-                // Update the UI with data from database
-                // Habit IDs: 1=Sleep, 2=Exercise, 3=Study, 4=Water (Verify these match your DB!)
+                // Habit IDs based on your logic: 1=Sleep, 2=Exercise, 3=Study, 4=Water
                 if (goals["1"]) document.getElementById('display-sleep').textContent = `${goals["1"]}h daily`;
                 if (goals["4"]) document.getElementById('display-water').textContent = `${goals["4"]}ml`;
                 if (goals["2"]) document.getElementById('display-exercise').textContent = `${goals["2"]}m daily`;
@@ -53,40 +64,31 @@ document.addEventListener('DOMContentLoaded', function () {
         if (element) {
             element.addEventListener('click', function (e) {
                 e.preventDefault();
-                // Removed the leading '/' to use relative paths
                 window.location.href = url; 
             });
         }
     }
 
-    // --- FIXED LOGOUT LOGIC ---
+    // --- LOGOUT LOGIC ---
     const logoutBtn = document.getElementById('logout-btn'); 
     
     if (logoutBtn) {
-        console.log("✅ Logout button found in HTML");
-        
         logoutBtn.addEventListener('click', async (e) => {
             e.preventDefault();
-            console.log("🖱️ Logout button clicked");
-
             if (confirm("Are you sure you want to log out?")) {
                 try {
                     await signOut(auth);
-                    console.log("👋 Firebase signed out");
-                    // DOUBLE CHECK YOUR PATH: is it /login or /pages/login.html?
                     window.location.href = "/pages/login.html"; 
                 } catch (error) {
                     console.error("❌ Logout failed:", error);
-                    alert("Logout failed. Check console for details.");
+                    alert("Logout failed.");
                 }
             }
         });
-    } else {
-        console.warn("⚠️ Could not find an element with id='logout-btn'");
     }
 
-    // Apply navigation to all buttons
-    navigateTo('menu-dashboard', '/pages/dashboard.html'); // If dashboard.js is in /js/ and html is in /pages/
+    // Navigation Mapping
+    navigateTo('menu-dashboard', '/pages/dashboard.html');
     navigateTo('menu-habits', '/pages/habits.html');
     navigateTo('menu-history', '/pages/historyCalendar.html');
     navigateTo('profile-btn', '/pages/profile.html');
