@@ -43,6 +43,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "..", "public")));
 
+// This tells Express to let the browser see files like profile.jpg
+app.use(express.static('public'));
+
 // 4. Static Files (Serves CSS/JS from public folder)
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
