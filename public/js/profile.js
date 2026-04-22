@@ -3,6 +3,15 @@ import { onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/1
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
+        // --- NEW PHOTO LOGIC ---
+        // const photoElement = document.getElementById("user-photo");
+        // if (photoElement && user.photoURL) {
+        //     // Set the background image to the user's Google profile pic
+        //     photoElement.style.backgroundImage = `url('${user.photoURL}')`;
+        // } else if (photoElement) {
+        //     // Fallback if they don't have a photo
+        //     photoElement.style.backgroundImage = `url('https://ui-avatars.com/api/?name=${user.displayName || 'User'}&background=random')`;
+        // }
         try {
             const token = await user.getIdToken();
             
