@@ -80,7 +80,7 @@
             <label class="flex flex-col w-full">
                 <div class="flex justify-between items-end pb-2">
                     <p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal">Password</p>
-                    <a class="text-primary text-xs font-bold hover:underline" href="#">Forgot password?</a>
+                    <a id="forgotPasswordLink" class="text-primary text-xs font-bold hover:underline" href="#">Forgot password?</a>
                 </div>
                 <div class="flex w-full items-stretch rounded-lg">
                     <input id="password" class="form-input flex w-full min-w-0 flex-1 rounded-lg text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-slate-400 p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal" placeholder="Enter your password" type="password"/>
@@ -93,6 +93,7 @@
             <button id="loginBtn" class="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-colors mt-4">
                 Sign In
             </button>
+            <p id="loginMessage" class="text-sm text-center mt-2"></p>
 
             <div class="flex items-center gap-4 my-4">
                 <div class="h-px bg-slate-200 dark:bg-slate-800 flex-1"></div>
